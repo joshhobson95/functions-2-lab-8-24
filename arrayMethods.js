@@ -111,7 +111,7 @@ const orderTotals = orders.map(el => el.price + (el.price * el.tax))
  console.log(orderTotals)
 
 //my syntax here was just a bit off
-//i was trying to seperate the two math functions (addiation and the tax multiplication)
+//i was trying to seperate the two math functions (addition and the tax multiplication)
 //but I couldnt get the right syntax
 
 

@@ -8,13 +8,17 @@
 // CODE HERE
 
 
+const multiply = (num1, num2, callbackFunction) => callbackFunction(num1 * num2)
+//broken
+
+
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// multiply(4, 3, answer => {
-//   console.log('The answer is ' + answer) //should console.log 12
-// })
+multiply = (4, 3, answer => {
+   console.log('The answer is ' + answer) 
+  })
 
 
 
@@ -37,14 +41,17 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 
 // CODE HERE 
 
+const first = (arr, callbackFunction) => callbackFunction(names[0])
+
+  
+ 
+
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// first(names, firstName => {
-//   console.log('The first name in names is ' + firstName)
-// })
+  first(names, firstName => {console.log('The first name in names is ' + firstName)})
 
 
 
@@ -57,14 +64,15 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 
 // CODE HERE
 
+const last = (arr, callbackFunction) => callbackFunction(names[names.length - 1])
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// last(names, lastName => {
-//   console.log('The last name in names is ' + lastName)
-// })
+ last(names, lastName => {
+  console.log('The last name in names is ' + lastName)
+ })
 
 
 
@@ -79,20 +87,23 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 
 // CODE HERE 
 
+const contains = (arr, oneName, callbackFunction) => callbackFunction(arr.includes(oneName))
 
-
+//.INCLUDES!!!!!!
+//?? now is broken??
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// contains(names, 'Colt', result => {
-//   if(result === true){
-//     console.log('Colt is in the array')
-//   } else {
-//     console.log('Colt is not in the array')
-//   }
-// })
+ contains(names, 'Colt', result => {
+   if(result === true){
+     console.log('Colt is in the array')
+   } else {
+     console.log('Colt is not in the array')
+   }
+ })
+
 
 
 
@@ -105,6 +116,10 @@ var names = ['Tyler', 'Cahlan', 'Ryan', 'Colt', 'Tyler', 'Blaine', 'Cahlan']
 */
 
 // CODE HERE
+
+
+
+
 
 /*
   Invoke the uniq function, passing in the names array from above and a callback function.
