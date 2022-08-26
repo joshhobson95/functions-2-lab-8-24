@@ -7,18 +7,20 @@
 
 // CODE HERE
 
-
-const multiply = (num1, num2, callbackFunction) => callbackFunction(num1 * num2)
-//broken
+const multiply = (num1, num2, cb) => cb(num1 * num2)
 
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-multiply = (4, 3, answer => {
-   console.log('The answer is ' + answer) 
-  })
+multiply(4, 3, answer => {
+  console.log('The answer is ' + answer) 
+})
+
+
+   
+
 
 
 
@@ -90,7 +92,7 @@ const last = (arr, callbackFunction) => callbackFunction(names[names.length - 1]
 const contains = (arr, oneName, callbackFunction) => callbackFunction(arr.includes(oneName))
 
 //.INCLUDES!!!!!!
-//?? now is broken??
+
 
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
@@ -117,9 +119,21 @@ const contains = (arr, oneName, callbackFunction) => callbackFunction(arr.includ
 
 // CODE HERE
 
+const uniq = (arr, cb) => {
+  for (let i = 0; i < arr.length; i++) {
+      for (let x = i + 1; x < arr.length; x++) {
+          if (arr[i] === arr[x]) {
+              arr.splice(x, 1)
+              x--
+          }
+      }
+  }
+
+  cb(arr)
+}
 
 
-
+//this one was super confusing
 
 /*
   Invoke the uniq function, passing in the names array from above and a callback function.
@@ -131,6 +145,10 @@ const contains = (arr, oneName, callbackFunction) => callbackFunction(arr.includ
 // CODE HERE
 
 
+uniq(names, uniqArr => console.log(`The new names array with all the duplicate items removed is ${uniqArr}`))
+
+
+
 
 ////////// PROBLEM 6 //////////
 
@@ -140,6 +158,10 @@ const contains = (arr, oneName, callbackFunction) => callbackFunction(arr.includ
 */
 
 // CODE HERE 
+
+
+
+const each = (names, cb) => names.forEach((element, i) => cb(element, i))
 
 
 /*
@@ -185,13 +207,32 @@ var users = [
 // CODE HERE 
 
 
+//const getUserById = (arr, id, cb) => arr.forEach(element => element.id === id ? cb(element) : null)
+
+// "?" is a conditional ternary operator
+//its the only javascript operator that takes three operands
+
+
+const getUserById = (arr, id, cb) => {
+  for (let i = 0; i < arr.length; i++) {
+      if (arr[i].id === id) {
+          return cb(arr[i])
+      }
+  }
+}
+
+//instead of a forEach you could run a simpler for loop
+//arr[i] will run the iterator through the for loop until the inputted id matches the id in the array
+// once it does it uses the callbackfunction to return info out of the users array (return cb(arr[i]))
+
+
 // UNCOMMENT THE FUNCTION CALL BELOW
 // RUN THIS FILE WITH NODE
 // CHECK YOUR ANSWER
 
-// getUserById(users, '16t', user => {
-//   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address) 
-// })
+ getUserById(users, '16t', user => {
+   console.log('The user with the id 16t has the email of ' + user.email + ' the name of ' + user.name + ' and the address of ' + user.address) 
+ })
 
 ////////// CHALLENGE //////////
 
@@ -211,6 +252,15 @@ var users = [
 
 // CODE HERE
 
+
+const addingFactory = num1 => num2 => num1 + num2
+  
+
+//compared to the createAdder in the handouts, this either needs () on both num1 and num2 the first time
+//or no parathesis at all
+    
+
+
 /*
   Now that you have addingFactory, you can create other
   functions from it. 
@@ -225,6 +275,10 @@ var users = [
 
 // CODE HERE
 
+let addTen = addingFactory(10)
+
+//nice!
+
 /*
   Now the inner function is stored in the addTen variable! 
 
@@ -236,6 +290,11 @@ var users = [
 */
 
 // CODE HERE
+
+console.log(addTen(2))
+console.log(addTen(4))
+
+//passing in!
 
 /*
   Let's make another function from the addingFactory. 
@@ -249,3 +308,9 @@ var users = [
 */
 
 // CODE HERE
+
+let addThree = addingFactory(3)
+
+console.log(addThree(10))
+
+//SWEET!
